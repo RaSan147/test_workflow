@@ -15,6 +15,6 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - name: Install xmllint
-        run: sudo apt-get install -y figlet
-        run: figlet "fuvk"
+      - run: sudo apt-get install -y figlet
+      - run: figlet "fuvk"
       - run: echo "🍏 This job's status is ${{ job.status }}."
