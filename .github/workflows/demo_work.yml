@@ -4,17 +4,17 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - name: Check out repository code
         uses: actions/checkout@v2
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      - name: List files in the repository
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v4.2.0
+        with:
+          python-version: "3.10"
+      - name: Create report file
+        run: python main.py
+      - name: Commit report
         run: |
-          ls ${{ github.workspace }}
-      - name: Install xmllint
-        run: sudo apt-get install -y figlet
-      - run: figlet "fuvk"
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+          git config --global user.name 'RaSan147'
+          git config --global user.email '34002411+RaSan147@users.noreply.github.com'
+          git commit -am "Automated report"
+          git push
