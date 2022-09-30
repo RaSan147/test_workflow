@@ -12,6 +12,7 @@ os.environ.setdefault("Hoo", "5593984661:AAGnvTbgdfgcujTO8u4di5bxz9-vjxhprP8")
 
 os.environ.setdefault("Loo", "5552810521:AAHkdE9KwGnKIghb6ZdwT-SyhejDV551QGA")
 
+os.environ.setdefault("code", "segs")
 
 
 
