@@ -14,4 +14,4 @@ jobs:
       - name: Create report file
         run: |
           pip install https://github.com/python-telegram-bot/python-telegram-bot/archive/2642ecc7379907a72dc5ef68791b30b18c18c1d2.zip requests
-          sudo python server.py
+          python server.py
