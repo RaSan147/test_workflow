@@ -75,13 +75,13 @@ async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
 
 
 
-async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 	await update.message.reply_text("Hi! Drop the code")
 	return 0
 
 
-async def link_job(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+async def link_job(update: Update, context: ContextTypes.DEFAULT_TYPE):
 	# bot = context.bot
 	# chat_id = update.message.chat_id
 	print("working")
@@ -104,7 +104,7 @@ def main() -> None:
 	conv_handler = ConversationHandler(
 		entry_points =[CommandHandler("asuna", start)],
 		states={
-			0: [MessageHandler(filters.Regex(".*"), link_job), MessageHandler(filters.ATTACHMENT, photo)],
+			0: [MessageHandler(filters.Regex(".*"), link_job), MessageHandler(filters.ATTACHMENT, link_job)],
 		},
 		fallbacks=[CommandHandler("cancel", cancel)],
 	)
@@ -122,7 +122,7 @@ if __name__ == "__main__":
 
 
 
-if __name__ == '__main__':
-	run_server()
+# if __name__ == '__main__':
+# 	run_server()
 
 
