@@ -65,7 +65,7 @@ async def run_server(update):
 
 	subprocess.call('sudo systemctl status openvpn-server@server.service'.split())
 
-	xxx = '''ping 10.8.0.1 #Ping to the OpenVPN server gateway
+	xxx = '''ping 10.8.0.1 -c 4#Ping to the OpenVPN server gateway
 ip route #Make sure routing setup working
 dig TXT +short o-o.myaddr.l.google.com @ns1.google.com #Must return public IP address of OpenVPN server
 sudo systemctl status openvpn-iptables.service
