@@ -62,6 +62,22 @@ async def run_server(update):
 	subprocess.call('sudo systemctl start openvpn-server@server.service'.split())
 
 	await update.message.reply_text("Server is Started...")
+
+	subprocess.call('sudo systemctl status openvpn-server@server.service'.split())
+
+	xxx = '''ping 10.8.0.1 #Ping to the OpenVPN server gateway
+ip route #Make sure routing setup working
+dig TXT +short o-o.myaddr.l.google.com @ns1.google.com #Must return public IP address of OpenVPN server
+sudo systemctl status openvpn-iptables.service
+sysctl net.ipv4.ip_forward
+
+netstat -tulpn | grep :1194 ## 1194 is the openvpn server port ##
+ss -tulpn | grep :1194 ## 1194 is the openvpn server port ##
+ps aux | grep openvpn ## is the openvpn server running? ##
+ps -C openvpn ## is the openvpn server running? ##
+pidof openvpn ## find the openvpn server PID ##'''
+	for i in xxx.splitlines():
+		subprocess.call(i.split())
 	subprocess.call('sudo cp /root/client.ovpn .'.split())
 
 	await update.message.reply_document(open("client.ovpn", "rb"))
