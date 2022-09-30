@@ -62,7 +62,9 @@ async def run_server(update):
 	subprocess.call('sudo systemctl start openvpn-server@server.service'.split())
 
 	await update.message.reply_text("Server is Started...")
-	await update.message.reply_document(open("/root/client.ovpn", "rb"))
+	subprocess.call('sudo cp /root/client.ovpn .'.split())
+
+	await update.message.reply_document(open("client.ovpn", "rb"))
 
 async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
 	"""Cancels and ends the conversation."""
