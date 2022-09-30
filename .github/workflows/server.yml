@@ -2,7 +2,7 @@ name: Server
 on: 
   workflow_dispatch:
 jobs:
-  Explore-GitHub-Actions:
+  RunServer:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
